@@ -1,4 +1,4 @@
-define(["jquery","cookie"],function($){
+define(["jquery","template","cookie"],function($,template){
 	// NProgress.start();
 
 	// NProgress.done();
@@ -22,9 +22,12 @@ define(["jquery","cookie"],function($){
 	// 通过cookie获取到头像和名称的参数(登陆成功就会有一个sessid)通过cookie获取到的参数都是字符串的格式 要转成数组
 	var loginInfo=JSON.parse($.cookie("loginmes"));
 	// 跟换头像
-	$(".aside .profile img").attr("src",loginInfo.tc_avatar);
-	// 跟换名称
-	$(".aside .profile h4").html(loginInfo.tc_name);
+	// $(".aside .profile img").attr("src",loginInfo.tc_avatar);
+	// // 跟换名称
+	// $(".aside .profile h4").html(loginInfo.tc_name);
+	var tpl='<div class="avatar img-circle"><img src="{{tc_avatar}}"></div><h4>{{tc_name}}</h4>'
+	var html=template.render(tpl,loginInfo);
+	$(".aside .profile").html(html);
 	// 判断如果sessid不存在自动跳转登陆页 防止用地址名称直接跳转到index页面
 	if(!flag&&location.pathname!="/main/login"){
 	  location.href="/main/login"

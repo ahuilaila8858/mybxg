@@ -4,6 +4,7 @@ require.config({
         jquery:"jquery/jquery",
         common:"../js/common",
         cookie:"jquery-cookie/jquery.cookie",
+        template:"artTemplate/template-web",
         login:"../js/login"
     }
 })
