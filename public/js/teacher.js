@@ -1,4 +1,4 @@
-define(["jquery","template"],function($,template){
+define(["jquery","template","bootstrap"],function($,template){
         $.ajax({
             type:"get",
             url:"/api/teacher",
@@ -33,6 +33,24 @@ define(["jquery","template"],function($,template){
                                 $(that).html("启用")
                             }
                         }
+                       }
+                   })
+               });
+            //    查看讲师信息
+               $(".teachermsg").click(function(){
+                    //    获取点击按钮的父元素td
+                    var td=$(this).parent("td");
+                    //    获取td的自定义属性的值 tc_id
+                       var tc_id=td.attr("data-id");
+                   $.ajax({
+                       type:"get",
+                       url:"/api/teacher/view",
+                       data:{tc_id:tc_id},
+                       dataType:"json",
+                       success:function(data){
+                        var html =template("moduleTpl",data.result);
+                        $("#moduleInfo").html(html);
+                        $("#teacherModal").modal();
                        }
                    })
                })
