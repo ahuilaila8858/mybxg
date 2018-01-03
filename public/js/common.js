@@ -28,7 +28,7 @@ define(["jquery","template","cookie"],function($,template){
 	var tpl='<div class="avatar img-circle"><img src="{{tc_avatar}}"></div><h4>{{tc_name}}</h4>'
 	var html=template.render(tpl,loginInfo);
 	$(".aside .profile").html(html);
-	// 判断如果sessid不存在自动跳转登陆页 防止用地址名称直接跳转到index页面
+	// // 判断如果sessid不存在自动跳转登陆页 防止用地址名称直接跳转到index页面
 	if(!flag&&location.pathname!="/main/login"){
 	  location.href="/main/login"
 	}
