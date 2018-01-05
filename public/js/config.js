@@ -13,7 +13,8 @@ require.config({
         datepicker: "bootstrap-datepicker/js/bootstrap-datepicker.min",
         language: "bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min",
         form: "jquery-form/jquery.form",
-        validate: "validate/jquery-validate"
+        validate: "validate/jquery-validate",
+        settings: "../js/settings"
     },
     shim: {
         bootstrap: {
