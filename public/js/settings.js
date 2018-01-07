@@ -31,13 +31,16 @@ define(["jquery", "template", "ckeditor", "uploadify", "region", "datepicker", "
                 $("#settingsForm").validate({
                     sendForm: false,
                     valid: function() {
+                        // 获取省市县
                         var p = $("#p").find("option:selected").text()
                         var c = $("#c").find("option:selected").text()
                         var d = $("#d").find("option:selected").text()
                         var homeTown = p + "|" + c + "|" + d;
+                        // 同步副本本
                         for (var instance in CKEDITOR.instances) {
                             CKEDITOR.instances[instance].updateElement();
                         }
+                        // jquery form 提交表单
                         $(this).ajaxSubmit({
                             type: "post",
                             url: "/api/teacher/modify",
