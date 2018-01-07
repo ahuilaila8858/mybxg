@@ -1,4 +1,4 @@
-define(["jquery", "template", "uploadify", "region"], function($, template) {
+define(["jquery", "template", "ckeditor", "uploadify", "region", "datepicker", "language"], function($, template, CKEDITOR) {
     $.ajax({
         type: "post",
         url: "/api/teacher/profile",
@@ -18,6 +18,12 @@ define(["jquery", "template", "uploadify", "region"], function($, template) {
                 });
                 $("#pcd").region({
                     url: "/public/assets/jquery-region/region.json"
+                });
+                CKEDITOR.replace("ckeditor", {
+                    toolbarGroups: [
+                        { name: 'clipboard', groups: ['clipboard', 'undo'] },
+                        { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
+                    ]
                 })
             }
         }
