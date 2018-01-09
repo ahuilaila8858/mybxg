@@ -1,4 +1,4 @@
-define(["jquery", "template", "until"], function($, template, until) {
+define(["jquery", "template", "until", "ckeditor"], function($, template, until, CKEDITOR) {
     until.setMenu("/course/add")
     var csId = until.qs("cs_id");
     var flag = until.qs("flag");
@@ -31,6 +31,12 @@ define(["jquery", "template", "until"], function($, template, until) {
                             }
                         }
                     })
+                })
+                CKEDITOR.replace('editor', {
+                    toolbarGroups: [
+                        { name: 'clipboard', groups: ['clipboard', 'undo'] },
+                        { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
+                    ]
                 })
             }
         }
