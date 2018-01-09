@@ -16,6 +16,22 @@ define(["jquery", "template", "until"], function($, template, until) {
             if (data.code == 200) {
                 var html = template("basicTpl", data.result);
                 $("#basicInfo").html(html);
+                $("#fristType").change(function() {
+                    var pid = $(this).val();
+                    $.ajax({
+                        type: "get",
+                        url: "/api/category/child",
+                        data: { cg_id: pid },
+                        dataType: "json",
+                        success: function(data) {
+                            if (data.code == 200) {
+                                var tpl = '<option>请选择二级分类</option>{{each list}}<option value="{{$value.cg_id}}">{{$value.cg_name}}</option>{{/each}}';
+                                var html = template.render(tpl, { list: data.result });
+                                $("#secondType").html(html);
+                            }
+                        }
+                    })
+                })
             }
         }
 
