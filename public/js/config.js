@@ -19,7 +19,9 @@ require.config({
         region: "jquery-region/jquery.region",
         ckeditor: "ckeditor/ckeditor",
         courselist: "../js/course-list",
-        index: "../js/index"
+        index: "../js/index",
+        courseadd: "../js/courseadd",
+        coursebasic: "../js/course-basic"
     },
     shim: {
         bootstrap: {

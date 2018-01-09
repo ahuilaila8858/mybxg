@@ -7,7 +7,7 @@ define(["jquery"], function($) {
                 var result = null;
                 $.each(ps, function(index, item) {
                     var kv = item.split("=");
-                    if (kv[0] == "tc_id") {
+                    if (kv[0] == key) {
                         result = kv[1];
                         return false;
                     }
